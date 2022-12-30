@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import PocetniEkran from './screens/PocetniEkran';
 import KrajIgre from './screens/KrajIgre';
 import EkranIgre from './screens/EkranIgre';
-
+import {Ionicons,AntDesign,Feather  } from '@expo/vector-icons';
 export default function App() {
   const [screen, setCurrentScreen] = useState(1);
   const [userMove, setUserMove] = useState(null);
@@ -33,13 +33,13 @@ export default function App() {
 
   const determineResult = (userMove, computerMove) => {
     if (userMove === computerMove) {
-      setResult("It's a draw!");
+      setResult("Nerijeseno!");
       setDraws(draws + 1);
     } else if (userMove === 1 && computerMove === 3 || userMove === 2 && computerMove === 1 || userMove === 3 && computerMove === 2) {
-      setResult("You won!");
+      setResult("Pobjeda!");
       setWins(wins + 1);
     } else {
-      setResult("You lost!");
+      setResult("Poraz!");
       setLosses(losses + 1);
     }
 
@@ -62,51 +62,16 @@ export default function App() {
   else if(screen==3){
     sadrzaj = <KrajIgre
     pocetak={promijeniEkran}
-    promijeniSve={promijeniSveVarijable}
     userMove={userMove}
     computerMove={computerMove}
     result={result}
     wins={wins}
-    setWins={setWins}
     losses={losses}
-    setLosses={setLosses}
-    draws={draws}
-    setDraws={setDraws}/>
+    draws={draws}/>
   }
   return (
     <View style={styles.ekran}>
       {sadrzaj}
-      {/** 
-       * 
-       *       {screen === 'EkranIgre' && (
-        <EkranIgre
-        setCurrentScreen={setScreen}
-          setUserMove={setUserMove}
-          setComputerMove={setComputerMove}
-          wins={wins}
-          setWins={setWins}
-          losses={losses}
-          setLosses={setLosses}
-          draws={draws}
-          setDraws={setDraws}
-        />
-      )}
-      {screen === 'KrajIgre' && (
-        <KrajIgre
-        setCurrentScreen={setScreen}
-          userMove={userMove}
-          computerMove={computerMove}
-          result={result}
-          wins={wins}
-          setWins={setWins}
-          losses={losses}
-          setLosses={setLosses}
-          draws={draws}
-          setDraws={setDraws}
-        />
-      )}
-      */}
-
     </View>
   );
 }

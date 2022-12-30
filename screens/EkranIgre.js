@@ -1,50 +1,35 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-
-import KrajIgre from './KrajIgre';
-
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Animated  } from 'react-native';
+import {Ionicons,AntDesign,Feather, FontAwesome } from '@expo/vector-icons';
 const EkranIgre = (props) => {
   const [userMove, setUserMove] = useState(null);
   const [computerMove, setComputerMove] = useState(null);
   const [result, setResult] = useState(null);
-  //const [wins, setWins] = useState(0);
-  //const [losses, setLosses] = useState(0);
-  //const [draws, setDraws] = useState(0);
   let wins = props.wins;
   let losses = props.losses;
   let draws = props.draws;
+
   const handleMove = move => {
     setUserMove(move);
-    // Choose a random move for the computer
     const computerMove = Math.floor(Math.random() * 3) + 1;
     setComputerMove(computerMove);
-    // Determine the result of the game
-    /*
-    if (move === computerMove) {
-      setResult("It's a draw!");
-      setDraws(draws + 1);
-    } else if (move === 1 && computerMove === 3 || move === 2 && computerMove === 1 || move === 3 && computerMove === 2) {
-      setResult("You won!");
-      //setWins(wins + 1);
-      wins = props.wins;
-      //console.log("Dobio si")
-    } else {
-      setResult("You lost!");
-      losses = props.losses
-      setLosses(losses + 1);
-    }
-    */
     props.promijeniSve(move,computerMove,result,wins,losses,draws);
     props.pocetak(3);
   };
 
   return(
     <View style={styles.container}>
-      <Text style={styles.label}>Choose your move:</Text>
+      <Text style={styles.label}>Odaberi svoj potez:</Text>
       <View style={styles.buttonContainer}>
-        <Button title="Rock" onPress={() => handleMove(1)} />
-        <Button title="Paper" onPress={() => handleMove(2)} />
-        <Button title="Scissors" onPress={() => handleMove(3)} />
+      <TouchableOpacity title="Kamen" onPress={() => handleMove(1)}>
+      <FontAwesome name="hand-rock-o" style={styles.odabir} />
+      </TouchableOpacity>
+      <TouchableOpacity title="Kamen" onPress={() => handleMove(3)}>
+      <FontAwesome name="hand-scissors-o" style={styles.odabir} />
+      </TouchableOpacity>
+      <TouchableOpacity title="Papir" onPress={() => handleMove(2)}>
+      <FontAwesome name="hand-paper-o" style={styles.odabir} />
+      </TouchableOpacity>
       </View>
     </View>
   );
@@ -57,11 +42,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    fontSize: 20,
+    fontSize: 48,
+    color:'white',
     marginBottom: 20,
   },
   buttonContainer: {
     flexDirection: 'row',
+  },
+  odabir:{
+    fontSize:76,
+    color:'white',
+    margin:'5%'
   },
 });
 

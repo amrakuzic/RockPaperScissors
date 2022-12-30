@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import GumbPocetakIgre from '../components/GumbPocetakIgre';
 import PrikazInfo from '../components/PrikazInfo';
-
+import {Ionicons,AntDesign,Feather  } from '@expo/vector-icons';
 const PocetniEkran = (props) => {
+  let promijeniEkr = props.pocetak;
   return (
     <View style={stil.ekran}>
       <View style={stil.halfEkran}>
@@ -12,7 +13,7 @@ const PocetniEkran = (props) => {
       <View style={stil.halfEkran}>
         <GumbPocetakIgre
           title="Pocetak igre"
-          onPress={() => {props.pocetak(2)}}
+          promijeni={promijeniEkr}
         />
       </View>
     </View>

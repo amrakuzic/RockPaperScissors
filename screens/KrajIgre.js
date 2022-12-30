@@ -1,43 +1,68 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-
+import MojGumb from '../components/MojGumb';
+import {Ionicons,AntDesign,Feather  } from '@expo/vector-icons';
 const KrajIgre = (props) => {
+  let promijeniEkr = props.pocetak;
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>
-        You chose: {getMoveName(props.userMove)}
+    <View style={styles.modalView}>
+      <Text style={styles.text}>
+        Ti: {getMoveName(props.userMove)}
         {'\n'}
-        Computer chose: {getMoveName(props.computerMove)}
+        Računalo: {getMoveName(props.computerMove)}
       </Text>
-      <Text style={styles.label}>{props.result}</Text>
-      <Text style={styles.label}>
-        Wins: {props.wins} Losses: {props.losses} Draws: {props.draws}
+      <Text style={styles.text}>{props.result}</Text>
+      <Text style={styles.text}>
+        Pobjede: {props.wins} Porazi: {props.losses} Nerijeseno: {props.draws}
       </Text>
-      <Button title="Play again" onPress={() => {props.pocetak(2)}} />
+      <MojGumb title="Igraj Ponovno" promijeni={promijeniEkr}/>
     </View>
   );
 };
 
 const getMoveName = move => {
   if (move === 1) {
-    return 'Rock';
+    return 'Kamen';
   } else if (move === 2) {
-    return 'Paper';
+    return 'Papir';
   } else if (move === 3) {
-    return 'Scissors';
+    return 'Škare';
   }
 };
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  text: {
+    color: 'white',
+    fontSize: 30,
+    textAlign: 'center',
   },
-  label: {
+  textModal: {
+
     fontSize: 20,
-    marginBottom: 20,
+    textAlign: 'center',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "grey",
+    borderRadius: 20,
+    padding: 10,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    top:'-22%',
+    marginTop: 22
   },
 });
-
 export default KrajIgre;

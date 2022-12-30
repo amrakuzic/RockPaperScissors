@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Modal, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import {Ionicons,AntDesign,Feather  } from '@expo/vector-icons';
+
 function PrikazInfo() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View>
+      
       <TouchableOpacity onPress={() => setModalVisible(true)}>
-        <Text style={styles.text}>Test</Text>
+        <Feather name="info" size={48} color="white" />
       </TouchableOpacity>
       <Modal
         //animationType="fade"
@@ -36,13 +39,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   textModal: {
-
-    fontSize: 20,
+    color: 'white',
+    fontSize: 32,
     textAlign: 'center',
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: "grey",
     borderRadius: 20,
     padding: 10,
     alignItems: "center",
