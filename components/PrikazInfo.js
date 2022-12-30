@@ -6,7 +6,7 @@ function PrikazInfo() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View>
+    <View style={styles.info}>
       
       <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Feather name="info" size={48} color="white" />
@@ -62,8 +62,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    top:'-22%',
+    top:'0%',
     marginTop: 22
+  },
+  info:{
+    top:'-15%'
   },
 });
 export default PrikazInfo;

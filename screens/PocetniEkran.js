@@ -2,15 +2,24 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import GumbPocetakIgre from '../components/GumbPocetakIgre';
 import PrikazInfo from '../components/PrikazInfo';
-import {Ionicons,AntDesign,Feather  } from '@expo/vector-icons';
+import {Ionicons,AntDesign,Feather, FontAwesome } from '@expo/vector-icons';
 const PocetniEkran = (props) => {
   let promijeniEkr = props.pocetak;
   return (
     <View style={stil.ekran}>
       <View style={stil.halfEkran}>
-        <PrikazInfo />
+        <View style={stil.pocetneIkone}>
+          <FontAwesome name="hand-rock-o" style={stil.odabir} />
+
+          <FontAwesome name="hand-scissors-o" style={stil.odabir} />
+
+          <FontAwesome name="hand-paper-o" style={stil.odabir} />
+        </View>
+
+        
       </View>
       <View style={stil.halfEkran}>
+      <PrikazInfo />
         <GumbPocetakIgre
           title="Pocetak igre"
           promijeni={promijeniEkr}
@@ -38,6 +47,14 @@ const stil = StyleSheet.create({
     height: '50%',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  odabir:{
+    fontSize:76,
+    color:'#ffd700',
+    margin:'5%'
+  },
+  pocetneIkone:{
+    flexDirection: 'row',
   },
 });
 
